@@ -80,6 +80,7 @@ class UI extends EventEmitter
   init_event_handlers: ->
     document.addEventListener 'keydown', (e) =>
       keystroke = keystrokeForKeyboardEvent(e)
+      # console.log "Keystroke: #{keystroke}"
       @emit 'input', keystroke if keystroke
 
     document.addEventListener 'mousedown', (e) =>
@@ -202,11 +203,11 @@ class UI extends EventEmitter
           else
             for args in e[1..]
               handler.apply @, args
-        else console.log 'Redraw event not handled: ' + e.toString()
+        # else console.log 'Redraw event not handled: ' + e.toString()
       catch ex
-        console.log 'Error when processing event!'
-        console.log e.toString()
-        console.log ex.stack || ex
+        # console.log 'Error when processing event!'
+        # console.log e.toString()
+        # console.log ex.stack || ex
     @update_cursor()
 
   nv_bell: -> shell.beep()

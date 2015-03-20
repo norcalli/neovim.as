@@ -124,6 +124,8 @@ exports.keystrokeForKeyboardEvent = (event) ->
     else
       key = if keyIdentifier.length == 1 then keyIdentifier.toLowerCase() else keyIdentifier
 
+  # console.log "keyIdent: #{keyIdentifier}, charCode: #{charCode}"
+  # console.log "key: #{key}"
   if not key?
     ''
   else

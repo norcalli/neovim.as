@@ -15,6 +15,7 @@ module.exports = (grunt) ->
           'src/nvim/key_handler.js': 'src/nvim/key_handler.coffee'
           'src/nvim/main.js': 'src/nvim/main.coffee'
           'src/nvim/nvim.js': 'src/nvim/nvim.coffee'
+          'src/nvim/helpers.js': 'src/nvim/helpers.coffee'
           'src/nvim/ui.js': 'src/nvim/ui.coffee'
 
 
