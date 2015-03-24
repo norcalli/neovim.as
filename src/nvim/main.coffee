@@ -16,3 +16,14 @@ window.onload = ->
     win.show()
     win.openDevTools()
     # console.log error.stack ? error
+
+ipc = require("ipc")
+
+ipc.on "paste", (message) ->
+  window.nvim.paste(message)
+
+ipc.on "command", (message) ->
+  window.nvim.command(message)
+
+ipc.on "quit", ->
+  window.nvim.quit()

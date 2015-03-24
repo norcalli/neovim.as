@@ -6,6 +6,7 @@
 html,
 body,
 canvas {
+  -webkit-app-region: drag;
   background-color: #fff;
   width: 100%;
   height: 100%;

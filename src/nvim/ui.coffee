@@ -240,6 +240,10 @@ class UI extends EventEmitter
 
   nv_normal_mode: -> document.body.className = 'normal-mode'
 
+  # init_ctx: ->
+  #   @ctx.textBaseline = "top"
+  #   @ctx.font = 
+
   nv_put: (chars) ->
     return if chars.length == 0
 
