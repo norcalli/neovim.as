@@ -11,6 +11,7 @@ app = remote.require 'app'
 config =
   fg_color: '#000'
   bg_color: '#fff'
+  sp_color: '#fff'
   row: 80
   col: 40
   font: '13px Inconsolata, Monaco, Consolas, \'Source Code Pro\', \'Ubuntu Mono\', \'DejaVu Sans Mono\', \'Courier New\', Courier, monospace'
