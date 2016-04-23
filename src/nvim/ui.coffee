@@ -182,6 +182,7 @@ class UI extends EventEmitter
 
   get_cur_fg_color: -> if @attrs.reverse then @attrs.bg_color ? @bg_color else @attrs.fg_color ? @fg_color
   get_cur_bg_color: -> if @attrs.reverse then @attrs.fg_color ? @fg_color else @attrs.bg_color ? @bg_color
+  get_cur_sp_color: -> @attrs.sp_color ? @sp_color
 
   update_cursor: ->
     @cursor.style.top = (@cursor_row * @char_height) + 'px'
@@ -231,6 +232,7 @@ class UI extends EventEmitter
     @attrs.undercurl = attrs.undercurl
     if attrs.foreground? then @attrs.fg_color = @get_color_string(attrs.foreground)
     if attrs.background? then @attrs.bg_color = @get_color_string(attrs.background)
+    if attrs.special? then @attrs.sp_color = @get_color_string(attrs.special)
 
   nv_insert_mode: -> document.body.className = 'insert-mode'
 
@@ -263,7 +265,7 @@ class UI extends EventEmitter
       char_x += @canvas_char_width
 
     if @attrs.underline
-      @ctx.strokeStyle = @get_cur_fg_color()
+      @ctx.strokeStyle = @get_cur_sp_color()
       @ctx.lineWidth = @devicePixelRatio
       @ctx.beginPath()
       @ctx.moveTo x, y - @devicePixelRatio / 2
@@ -273,7 +275,7 @@ class UI extends EventEmitter
     if @attrs.undercurl
       offs = [1.5, 0.8, 0.5, 0.8, 1.5, 2.2, 2.5, 2.2]
       # should use sp_color, but neovim does not support it
-      @ctx.strokeStyle = @get_cur_fg_color()
+      @ctx.strokeStyle = @get_cur_sp_color()
       @ctx.lineWidth = @devicePixelRatio
       @ctx.beginPath()
       @ctx.moveTo x, y - @devicePixelRatio * offs[(x / @devicePixelRatio) % 8]
@@ -353,5 +355,6 @@ class UI extends EventEmitter
 
   nv_update_fg: (rgb) -> @cursor.style.borderColor = @fg_color = if rgb == -1 then config.fg_color else @get_color_string(rgb)
   nv_update_bg: (rgb) -> @bg_color = if rgb == -1 then config.bg_color else @get_color_string(rgb)
+  nv_update_sp: (rgb) -> @sp_color = if rgb == -1 then config.sp_color else @get_color_string(rgb)
 
 module.exports = UI
